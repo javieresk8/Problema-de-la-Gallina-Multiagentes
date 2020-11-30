@@ -35,8 +35,9 @@ public class AForward extends Agent {
 
         @Override
         public void action() {
-            //.gallina;
-           
+            int i = 0;
+            i++;
+            System.out.println("Hola mundo" + i);
             
         }
         

@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 /**
@@ -69,33 +70,54 @@ public class Juego extends javax.swing.JFrame {
         gallina.setLocation(derecha, izq);
         }*/
     }
-    
+    /*Como saber si me voy a la derecha o a la izquierda?*/
+   /* pubic void izquierda(){
+        
+    }*/
     public void detectarObs(){
-        int objY = posY +5;
-        //Color color = (new Robot()).getPixelColor(posX, objY );
+        int posObs1Y = Obs1.getY();
+        int posGallinaY = gallina.getY();
+        int distancia =  posGallinaY - Obs1.getY();
+        int distancia2 =  posGallinaY- Obs2.getY();
+        
+        if (distancia <= 30 && distancia >=25){
+             System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
+             decidirDireccion(Obs1);
+        }
+           
+        else
+            System.out.println("Avance" + distancia);
+        
+        if (distancia2 <= 30 && distancia2 >= 25){
+            System.out.println("Esta cerca un objeto 111!!! =========================" + distancia2);
+            decidirDireccion(Obs2);
+        }
+        
+        else
+            System.out.println("Avance" + distancia2);
+            
     }
-    public void mousePressed(MouseEvent e) throws AWTException{
-        Robot rob = new Robot();
-        Color clickedColor = rob.getPixelColor(e.getX(), e.getY());
-        System.out.println("El color es " + clickedColor.toString());
+    public void decidirDireccion(JPanel obstaculo){
+        int posObstX = obstaculo.getX();
+        if (posObstX == 0)
+            System.out.println("Debes irte para la derecha");
+        else 
+            System.out.println("Debes irte para la izquierda");
+        
     }
+    
+    public void moverDerecha(){
+        
+    }
+    
+    public void moverIzquierda(){
+        
+    }
+
     
     public void verificarMeta() throws AWTException{
        
-        int objY = posY -20;
-        int objX = posX;
-        Color colorMeta = Meta.getBackground();
-        Color color = (new Robot()).getPixelColor(objX, objY);
-        puntero.setLocation(objX, objY);
-        System.out.println(String.format("La posicion en x es %d , en Y es %d", posX, posY));
-        System.out.println("R = " + color.getRed());
-        System.out.println("G = " + color.getGreen());
-        System.out.println("B = " + color.getBlue());
-        System.out.println(String.valueOf(color) + String.valueOf(colorMeta));
-        if (color == colorMeta ){
-            
-            JOptionPane.showMessageDialog(null, "Llegaste a la meta");
-        }
+        
         
     }
     
@@ -111,10 +133,8 @@ public class Juego extends javax.swing.JFrame {
         Obs1 = new javax.swing.JPanel();
         Obs2 = new javax.swing.JPanel();
         Obs3 = new javax.swing.JPanel();
-        Obs4 = new javax.swing.JPanel();
         gallina = new javax.swing.JLabel();
         puntero = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -183,7 +203,7 @@ public class Juego extends javax.swing.JFrame {
         );
         Obs1Layout.setVerticalGroup(
             Obs1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 17, Short.MAX_VALUE)
         );
 
         Obs2.setBackground(new java.awt.Color(0, 0, 0));
@@ -212,85 +232,51 @@ public class Juego extends javax.swing.JFrame {
             .addGap(0, 14, Short.MAX_VALUE)
         );
 
-        Obs4.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout Obs4Layout = new javax.swing.GroupLayout(Obs4);
-        Obs4.setLayout(Obs4Layout);
-        Obs4Layout.setHorizontalGroup(
-            Obs4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-        Obs4Layout.setVerticalGroup(
-            Obs4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 16, Short.MAX_VALUE)
-        );
-
         gallina.setBackground(new java.awt.Color(255, 51, 51));
         gallina.setForeground(new java.awt.Color(255, 0, 0));
         gallina.setText("G");
 
         puntero.setText("pun");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 17, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Meta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addGap(0, 291, Short.MAX_VALUE)
+                .addComponent(Obs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Obs3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Obs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(Obs4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Obs3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(241, 241, 241)
+                        .addComponent(puntero))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(Obs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(gallina, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Obs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(200, 200, 200)
-                                .addComponent(puntero)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(287, 287, 287)
+                        .addComponent(gallina, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(Meta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(Obs4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170)
+                .addGap(38, 38, 38)
                 .addComponent(Obs3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(33, 33, 33)
                 .addComponent(Obs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(95, 95, 95)
+                .addComponent(Obs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(puntero)
-                .addGap(32, 32, 32)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Obs1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(56, 56, 56)
+                .addGap(34, 34, 34)
                 .addComponent(gallina)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -298,14 +284,13 @@ public class Juego extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -314,6 +299,7 @@ public class Juego extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         int variableX = gallina.getX();
         int variableY = gallina.getY();
+        detectarObs();
         switch (evt.getKeyChar()){
             case 'a':
                 variableX -= 5;
@@ -333,6 +319,10 @@ public class Juego extends javax.swing.JFrame {
         gallina.setLocation(variableX, variableY);
         setPosX(variableX);
         setPosY(variableY);
+        /*System.out.println(String.format("Obs1 la medida de x es %d y el de y es %d", Obs1.getX(), Obs1.getY()));
+         System.out.println(String.format("Obs2 la medida de x es %d y el de y es %d", Obs2.getX(), Obs2.getY()));
+        System.out.println(String.format("Gallina de x es %d y el de y es %d", gallina.getX(), gallina.getY()));
+        System.out.println(String.format("obs1 el largo %d y el ancho %d", Obs1.getWidth(), Obs1.getHeight()));*/
         variableY-=20;
        // puntero.setLocation(variableX, variableY);
         
@@ -383,11 +373,9 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel Obs1;
     private javax.swing.JPanel Obs2;
     private javax.swing.JPanel Obs3;
-    private javax.swing.JPanel Obs4;
     private javax.swing.JLabel gallina;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JLabel puntero;
