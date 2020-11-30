@@ -6,14 +6,17 @@
 package gallinaia;
 
 import View.Juego;
+import static gallinaia.Contenedor.juego;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import javax.swing.JLabel;
 
 /**
  *
  * @author uuse
  */
 public class AForward extends Agent {
+    public JLabel gallina;
 
     @Override
     public synchronized void waitUntilStarted() {
@@ -28,6 +31,7 @@ public class AForward extends Agent {
     @Override
     protected void setup() {
         super.setup();
+        System.out.println("forward creado...");
         addBehaviour(new Comportamiento());
     }
     
@@ -35,9 +39,16 @@ public class AForward extends Agent {
 
         @Override
         public void action() {
-            int i = 0;
-            i++;
-            System.out.println("Hola mundo" + i);
+            try {
+                Thread.sleep(500);
+                int posGallinaY = juego.getPosY();
+                posGallinaY +=5;
+                juego.avanzarGallina(-5);
+                System.out.println("aumento posicion" + juego.getPosY());
+                
+            } catch (Exception e) {
+            }
+            
             
         }
         

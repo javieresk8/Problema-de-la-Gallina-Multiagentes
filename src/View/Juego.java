@@ -54,8 +54,8 @@ public class Juego extends javax.swing.JFrame {
         this.posY = posY;
     }
 
-    public void avanzarGallina(int aumentoX) {
-        this.posX += aumentoX;
+    public void avanzarGallina(int aumentoY) {
+        this.posY += aumentoY;
         gallina.setLocation(posX, posY);
         /*int derecha = gallina.getX();
         int izq = gallina.getY();
