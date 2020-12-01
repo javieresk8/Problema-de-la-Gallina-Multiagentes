@@ -74,6 +74,12 @@ public class Juego extends javax.swing.JFrame {
    /* pubic void izquierda(){
         
     }*/
+    public int getPosObs1Y(){
+        return Obs1.getY();
+    }
+    public int getPosObs2Y(){
+        return Obs2.getY();
+    }
     public void detectarObs(){
         int posObs1Y = Obs1.getY();
         int posGallinaY = gallina.getY();

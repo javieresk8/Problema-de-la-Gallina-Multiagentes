@@ -9,6 +9,7 @@ import View.Juego;
 import static gallinaia.Contenedor.juego;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
+import jade.lang.acl.ACLMessage;
 import javax.swing.JLabel;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JLabel;
  * @author uuse
  */
 public class AForward extends Agent {
-    public JLabel gallina;
+    
 
     @Override
     public synchronized void waitUntilStarted() {
@@ -45,6 +46,8 @@ public class AForward extends Agent {
                 posGallinaY +=5;
                 juego.avanzarGallina(-5);
                 System.out.println("aumento posicion" + juego.getPosY());
+                ACLMessage acl = receive();
+                System.out.println(acl.toString()+ "---------------------------------");
                 
             } catch (Exception e) {
             }
