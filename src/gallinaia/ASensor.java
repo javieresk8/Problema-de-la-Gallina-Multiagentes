@@ -30,14 +30,7 @@ public class ASensor extends Agent{
     }
     
     class Comportamiento extends CyclicBehaviour{
-        public void decidirDireccion(JPanel obstaculo){
-            int posObstX = obstaculo.getX();
-            if (posObstX == 0)
-                System.out.println("derecha");
-            else 
-                System.out.println("izquierda");
         
-        }
         
         
 
