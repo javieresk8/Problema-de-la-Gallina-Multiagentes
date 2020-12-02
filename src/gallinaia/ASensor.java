@@ -10,6 +10,7 @@ import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -29,23 +30,40 @@ public class ASensor extends Agent{
     }
     
     class Comportamiento extends CyclicBehaviour{
+        public void decidirDireccion(JPanel obstaculo){
+            int posObstX = obstaculo.getX();
+            if (posObstX == 0)
+                System.out.println("derecha");
+            else 
+                System.out.println("izquierda");
+        
+        }
+        
+        
 
         @Override
         public void action() {
             
-        int posObs1Y = juego.getPosObs1Y();
-        int posObs2Y = juego.getPosObs2Y();
+        int posObs1Y = juego.getObs1().getPosY();
+        int posObs2Y = juego.getObs2().getPosY();
         int posGallinaY = juego.getPosY();
         int distancia =  posGallinaY - posObs1Y;
         int distancia2 =  posGallinaY- posObs2Y;
-        
+        Obstaculo obstaculoEncontrado;
         if (distancia <= 30 && distancia >=25){
-           // JOptionPane.showMessageDialog(null, "Esta cerca un objeto 111!!! =========================" + distancia);
-            System.out.println("\"Esta cerca un objeto 111!!! =========================\" + distancia");
-            EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Encontre Obs1", "COD001");
+           obstaculoEncontrado = juego.getObs1();
+           System.out.println("Esta cerca el objeto 1!!! =========================" + distancia);
+           EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
+           ACLMessage acl = blockingReceive();
+        } else if (distancia2 <= 30 && distancia2 >= 25){
+            obstaculoEncontrado = juego.getObs2();
+            System.out.println("Esta cerca el objeto 2!!! =========================" + distancia2);
+            EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
+            ACLMessage acl = blockingReceive();
+           
         }
-            // System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
-             //decidirDireccion(Obs1);
+        
+            
         }
             
             

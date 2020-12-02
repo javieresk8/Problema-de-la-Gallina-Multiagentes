@@ -5,6 +5,7 @@
  */
 package View;
 
+import gallinaia.Obstaculo;
 import java.awt.AWTException;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
@@ -27,82 +28,92 @@ public class Juego extends javax.swing.JFrame {
     
     int posX;
     int posY;
-    Color colorObstaculo;
+    Obstaculo obs1;
+    Obstaculo obs2;
+    
     public Juego() {
         
         initComponents();
-        this.colorObstaculo = Obs1.getBackground();
+        
         this.posX = gallina.getX();
         this.posY = gallina.getY() ; 
+        this.obs1 = new Obstaculo(Obs1.getX(), Obs1.getY());
+        this.obs2 = new Obstaculo(Obs2.getX(), Obs2.getY());
+        
     }
 
+    public Obstaculo getObs1() {
+        return obs1;
+    }
+
+    public Obstaculo getObs2() {
+        return obs2;
+    }
     
-    public int getPosX(){
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
+    
+    
+//    public int getPosX(){
+//        return posX;
+//    }
+//
+//    public void setPosX(int posX) {
+//        this.posX = posX;
+//    }
+//
     public int getPosY() {
         return posY;
     }
-
-    
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
+//
+//    
+//    public void setPosY(int posY) {
+//        this.posY = posY;
+//    }
 
     public void avanzarGallina(int aumentoY) {
         this.posY += aumentoY;
         gallina.setLocation(posX, posY);
-        /*int derecha = gallina.getX();
-        int izq = gallina.getY();
         
-        if(evt.getKeyChar() == 'a'){
-        derecha += 5;
-        gallina.setLocation(derecha, izq);
-        }
-        
-        if (evt.getKeyChar() == 's'){
-        izq -=5;
-        gallina.setLocation(derecha, izq);
-        }*/
     }
     /*Como saber si me voy a la derecha o a la izquierda?*/
    /* pubic void izquierda(){
         
     }*/
-    public int getPosObs1Y(){
-        return Obs1.getY();
-    }
-    public int getPosObs2Y(){
-        return Obs2.getY();
-    }
-    public void detectarObs(){
-        int posObs1Y = Obs1.getY();
-        int posGallinaY = gallina.getY();
-        int distancia =  posGallinaY - Obs1.getY();
-        int distancia2 =  posGallinaY- Obs2.getY();
-        
-        if (distancia <= 30 && distancia >=25){
-             System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
-             decidirDireccion(Obs1);
-        }
-           
-        else
-            System.out.println("Avance" + distancia);
-        
-        if (distancia2 <= 30 && distancia2 >= 25){
-            System.out.println("Esta cerca un objeto 111!!! =========================" + distancia2);
-            decidirDireccion(Obs2);
-        }
-        
-        else
-            System.out.println("Avance" + distancia2);
-            
-    }
+//    public int getPosObs1Y(){
+//        return Obs1.getY();
+//    }
+//    public int getPosObs2Y(){
+//        return Obs2.getY();
+//    }
+//    
+//    public JPanel getObs1(){
+//        return Obs1;
+//    }
+//    public JPanel getObs2(){
+//        return Obs2;
+//    }
+//    public void detectarObs(){
+//        int posObs1Y = Obs1.getY();
+//        int posGallinaY = gallina.getY();
+//        int distancia =  posGallinaY - Obs1.getY();
+//        int distancia2 =  posGallinaY- Obs2.getY();
+//        
+//        if (distancia <= 30 && distancia >=25){
+//             System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
+//             decidirDireccion(Obs1);
+//        }
+//           
+//        else
+//            System.out.println("Avance" + distancia);
+//        
+//        if (distancia2 <= 30 && distancia2 >= 25){
+//            System.out.println("Esta cerca un objeto 111!!! =========================" + distancia2);
+//            decidirDireccion(Obs2);
+//        }
+//        
+//        else
+//            System.out.println("Avance" + distancia2);
+//            
+//    }
     public void decidirDireccion(JPanel obstaculo){
         int posObstX = obstaculo.getX();
         if (posObstX == 0)
@@ -112,20 +123,20 @@ public class Juego extends javax.swing.JFrame {
         
     }
     
-    public void moverDerecha(){
-        
-    }
-    
-    public void moverIzquierda(){
-        
-    }
-
-    
-    public void verificarMeta() throws AWTException{
-       
-        
-        
-    }
+//    public void moverDerecha(){
+//        
+//    }
+//    
+//    public void moverIzquierda(){
+//        
+//    }
+//
+//    
+//    public void verificarMeta() throws AWTException{
+//       
+//        
+//        
+//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -140,7 +151,6 @@ public class Juego extends javax.swing.JFrame {
         Obs2 = new javax.swing.JPanel();
         Obs3 = new javax.swing.JPanel();
         gallina = new javax.swing.JLabel();
-        puntero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -242,8 +252,6 @@ public class Juego extends javax.swing.JFrame {
         gallina.setForeground(new java.awt.Color(255, 0, 0));
         gallina.setText("G");
 
-        puntero.setText("pun");
-
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -259,13 +267,8 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(puntero))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addComponent(gallina, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(287, 287, 287)
+                .addComponent(gallina, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -278,9 +281,7 @@ public class Juego extends javax.swing.JFrame {
                 .addComponent(Obs2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
                 .addComponent(Obs1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(puntero)
-                .addGap(34, 34, 34)
+                .addGap(68, 68, 68)
                 .addComponent(gallina)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -303,40 +304,40 @@ public class Juego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        int variableX = gallina.getX();
-        int variableY = gallina.getY();
-        detectarObs();
-        switch (evt.getKeyChar()){
-            case 'a':
-                variableX -= 5;
-                break;
-            case 'w':
-                variableY -= 5;
-                break;
-            case 's':
-                variableY += 5;
-                break;
-                
-            case 'd':
-                variableX += 5;
-                break;
-                
-        }
-        gallina.setLocation(variableX, variableY);
-        setPosX(variableX);
-        setPosY(variableY);
-        /*System.out.println(String.format("Obs1 la medida de x es %d y el de y es %d", Obs1.getX(), Obs1.getY()));
-         System.out.println(String.format("Obs2 la medida de x es %d y el de y es %d", Obs2.getX(), Obs2.getY()));
-        System.out.println(String.format("Gallina de x es %d y el de y es %d", gallina.getX(), gallina.getY()));
-        System.out.println(String.format("obs1 el largo %d y el ancho %d", Obs1.getWidth(), Obs1.getHeight()));*/
-        variableY-=20;
-       // puntero.setLocation(variableX, variableY);
-        
-        try {
-            verificarMeta();
-        } catch (AWTException ex) {
-            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        int variableX = gallina.getX();
+//        int variableY = gallina.getY();
+//        
+//        switch (evt.getKeyChar()){
+//            case 'a':
+//                variableX -= 5;
+//                break;
+//            case 'w':
+//                variableY -= 5;
+//                break;
+//            case 's':
+//                variableY += 5;
+//                break;
+//                
+//            case 'd':
+//                variableX += 5;
+//                break;
+//                
+//        }
+//        gallina.setLocation(variableX, variableY);
+//        setPosX(variableX);
+//        setPosY(variableY);
+//        /*System.out.println(String.format("Obs1 la medida de x es %d y el de y es %d", Obs1.getX(), Obs1.getY()));
+//         System.out.println(String.format("Obs2 la medida de x es %d y el de y es %d", Obs2.getX(), Obs2.getY()));
+//        System.out.println(String.format("Gallina de x es %d y el de y es %d", gallina.getX(), gallina.getY()));
+//        System.out.println(String.format("obs1 el largo %d y el ancho %d", Obs1.getWidth(), Obs1.getHeight()));*/
+//        variableY-=20;
+//       // puntero.setLocation(variableX, variableY);
+//        
+//        try {
+//            verificarMeta();
+//        } catch (AWTException ex) {
+//            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_formKeyPressed
 
     /**
@@ -384,6 +385,5 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JLabel puntero;
     // End of variables declaration//GEN-END:variables
 }
