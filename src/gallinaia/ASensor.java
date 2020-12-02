@@ -40,8 +40,9 @@ public class ASensor extends Agent{
         int distancia2 =  posGallinaY- posObs2Y;
         
         if (distancia <= 30 && distancia >=25){
-            JOptionPane.showMessageDialog(null, "Esta cerca un objeto 111!!! =========================" + distancia);
-            EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Encontre Obs1`", "COD001");
+           // JOptionPane.showMessageDialog(null, "Esta cerca un objeto 111!!! =========================" + distancia);
+            System.out.println("\"Esta cerca un objeto 111!!! =========================\" + distancia");
+            EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Encontre Obs1", "COD001");
         }
             // System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
              //decidirDireccion(Obs1);

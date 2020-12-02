@@ -41,13 +41,18 @@ public class AForward extends Agent {
         @Override
         public void action() {
             try {
-                Thread.sleep(500);
-                int posGallinaY = juego.getPosY();
-                posGallinaY +=5;
-                juego.avanzarGallina(-5);
-                System.out.println("aumento posicion" + juego.getPosY());
+                
                 ACLMessage acl = receive();
-                System.out.println(acl.toString()+ "---------------------------------");
+                System.out.println(acl);
+                if (acl == null){
+                    Thread.sleep(500);
+                    int posGallinaY = juego.getPosY();
+                    posGallinaY +=5;
+                    juego.avanzarGallina(-5);
+                    System.out.println("aumento posicion" + juego.getPosY());
+                    System.out.println(acl.toString()+ "---------------------------------");
+                } else block();
+                    
                 
             } catch (Exception e) {
             }
