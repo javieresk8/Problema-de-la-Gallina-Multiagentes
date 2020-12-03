@@ -50,7 +50,9 @@ public class Juego extends javax.swing.JFrame {
         return obs2;
     }
     
-    
+    public int getPosYMeta(){
+        return Meta.getY();
+    }
     
     public int getPosX(){
         return posX;
