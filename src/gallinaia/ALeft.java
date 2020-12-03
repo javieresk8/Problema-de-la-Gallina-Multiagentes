@@ -61,7 +61,8 @@ public class ALeft extends Agent{
                     break;
                 case 1:
                     accum += 5;
-                    sigSalida = posXInicial- obstaculo.getPosX() +50;
+                    sigSalida = obstaculo.getLargo() - posXInicial +20;
+                    System.out.println(String.format("La posicion de gallina es %d y la del obs es %d", posXInicial, obstaculo.getPosX()));
                     if ( sigSalida > accum){
                         moverIzquierda();
                     } else{

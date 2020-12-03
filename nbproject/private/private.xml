@@ -5,9 +5,12 @@
         <group>
             <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/View/Juego.java</file>
             <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/ASensor.java</file>
+            <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/ARight.java</file>
             <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/Obstaculo.java</file>
             <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/AForward.java</file>
+            <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/ALeft.java</file>
             <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/EnviarMensaje.java</file>
+            <file>file:/Users/uuse/NetBeansProjects/GallinaIA/src/gallinaia/Contenedor.java</file>
         </group>
     </open-files>
 </project-private>

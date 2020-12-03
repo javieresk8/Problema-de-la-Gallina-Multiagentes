@@ -22,7 +22,7 @@ public class ARight extends Agent {
         int indice = 0;
         int sigSalida = 0;
         int accum = 0;
-        int posXInicial = juego.getPosX();
+        int posXInicial;
         Obstaculo obstaculo ;
         public void moverDerecha() {
             try {
@@ -43,7 +43,7 @@ public class ARight extends Agent {
             switch (indice){
                 case 0:
                     ACLMessage acl = blockingReceive();
-            
+                    posXInicial = juego.getPosX();
                     try {
                         obstaculo = (Obstaculo)acl.getContentObject();
                     } catch (UnreadableException ex) {
@@ -54,7 +54,7 @@ public class ARight extends Agent {
                     break;
                 case 1:
                     accum += 5;
-                    sigSalida = obstaculo.getLargo()- posXInicial +50;
+                    sigSalida = obstaculo.getLargo()- posXInicial +20;
                     if ( sigSalida > accum){
                         moverDerecha();
                     } else{
