@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gallinaia;
 
 import View.Juego;
 import com.sun.istack.internal.logging.Logger;
-import com.sun.org.apache.bcel.internal.classfile.ClassParser;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
@@ -43,8 +37,6 @@ public class Contenedor {
             mainContainer.createNewAgent("ARight", ARight.class.getName(), null).start();
             mainContainer.createNewAgent("ALeft", ALeft.class.getName(), null).start();
             mainContainer.createNewAgent("AForward", AForward.class.getName(), null).start();
-           
-          
             mainContainer.createNewAgent("ASensor", ASensor.class.getName(), null).start();
             
         } catch (StaleProxyException e) {

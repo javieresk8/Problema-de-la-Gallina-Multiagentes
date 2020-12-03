@@ -1,27 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
 import gallinaia.Obstaculo;
-import java.awt.AWTException;
-import java.awt.event.KeyEvent;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Robot;
-import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 
 
 /**
  *
- * @author uuse
+ * @author Javier Erazo
  */
 public class Juego extends javax.swing.JFrame {
 
@@ -57,19 +43,10 @@ public class Juego extends javax.swing.JFrame {
     public int getPosX(){
         return posX;
     }
-//
-//    public void setPosX(int posX) {
-//        this.posX = posX;
-//    }
-//
+
     public int getPosY() {
         return posY;
     }
-//
-//    
-//    public void setPosY(int posY) {
-//        this.posY = posY;
-//    }
 
     public void avanzarGallina(int aumentoY) {
         this.posY += aumentoY;
@@ -81,70 +58,7 @@ public class Juego extends javax.swing.JFrame {
         this.posX += desplazamientoX;
         gallina.setLocation(posX, posY);  
     }
-    
-    /*Como saber si me voy a la derecha o a la izquierda?*/
-   /* pubic void izquierda(){
-        
-    }*/
-//    public int getPosObs1Y(){
-//        return Obs1.getY();
-//    }
-//    public int getPosObs2Y(){
-//        return Obs2.getY();
-//    }
-//    
-//    public JPanel getObs1(){
-//        return Obs1;
-//    }
-//    public JPanel getObs2(){
-//        return Obs2;
-//    }
-//    public void detectarObs(){
-//        int posObs1Y = Obs1.getY();
-//        int posGallinaY = gallina.getY();
-//        int distancia =  posGallinaY - Obs1.getY();
-//        int distancia2 =  posGallinaY- Obs2.getY();
-//        
-//        if (distancia <= 30 && distancia >=25){
-//             System.out.println("Esta cerca un objeto 111!!! =========================" + distancia);
-//             decidirDireccion(Obs1);
-//        }
-//           
-//        else
-//            System.out.println("Avance" + distancia);
-//        
-//        if (distancia2 <= 30 && distancia2 >= 25){
-//            System.out.println("Esta cerca un objeto 111!!! =========================" + distancia2);
-//            decidirDireccion(Obs2);
-//        }
-//        
-//        else
-//            System.out.println("Avance" + distancia2);
-//            
-//    }
-    public void decidirDireccion(JPanel obstaculo){
-        int posObstX = obstaculo.getX();
-        if (posObstX == 0)
-            System.out.println("Debes irte para la derecha");
-        else 
-            System.out.println("Debes irte para la izquierda");
-        
-    }
-    
-//    public void moverDerecha(){
-//        
-//    }
-//    
-//    public void moverIzquierda(){
-//        
-//    }
-//
-//    
-//    public void verificarMeta() throws AWTException{
-//       
-//        
-//        
-//    }
+
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -312,40 +226,8 @@ public class Juego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-//        int variableX = gallina.getX();
-//        int variableY = gallina.getY();
-//        
-//        switch (evt.getKeyChar()){
-//            case 'a':
-//                variableX -= 5;
-//                break;
-//            case 'w':
-//                variableY -= 5;
-//                break;
-//            case 's':
-//                variableY += 5;
-//                break;
-//                
-//            case 'd':
-//                variableX += 5;
-//                break;
-//                
-//        }
-//        gallina.setLocation(variableX, variableY);
-//        setPosX(variableX);
-//        setPosY(variableY);
-//        /*System.out.println(String.format("Obs1 la medida de x es %d y el de y es %d", Obs1.getX(), Obs1.getY()));
-//         System.out.println(String.format("Obs2 la medida de x es %d y el de y es %d", Obs2.getX(), Obs2.getY()));
-//        System.out.println(String.format("Gallina de x es %d y el de y es %d", gallina.getX(), gallina.getY()));
-//        System.out.println(String.format("obs1 el largo %d y el ancho %d", Obs1.getWidth(), Obs1.getHeight()));*/
-//        variableY-=20;
-//       // puntero.setLocation(variableX, variableY);
-//        
-//        try {
-//            verificarMeta();
-//        } catch (AWTException ex) {
-//            Logger.getLogger(Juego.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
+
     }//GEN-LAST:event_formKeyPressed
 
     /**

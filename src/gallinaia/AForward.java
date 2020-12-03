@@ -22,7 +22,6 @@ public class AForward extends Agent {
     @Override
     protected void setup() {
         super.setup();
-        System.out.println("forward creado...");
         addBehaviour(new Comportamiento());
     }
     

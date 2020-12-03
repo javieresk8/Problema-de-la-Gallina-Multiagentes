@@ -37,12 +37,12 @@ public class ASensor extends Agent {
             Obstaculo obstaculoEncontrado;
             if (distancia <= 30 && distancia >= 25) {
                 obstaculoEncontrado = juego.getObs1();
-                System.out.println("Esta cerca el objeto 1" + distancia);
+                System.out.println("Esta cerca el objeto 1: " + distancia);
                 EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
                 ACLMessage acl = blockingReceive();
             } else if (distancia2 <= 30 && distancia2 >= 25) {
                 obstaculoEncontrado = juego.getObs2();
-                System.out.println("Esta cerca el objeto 2" + distancia2);
+                System.out.println("Esta cerca el objeto 2: " + distancia2);
                 EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
                 ACLMessage acl = blockingReceive();
             }

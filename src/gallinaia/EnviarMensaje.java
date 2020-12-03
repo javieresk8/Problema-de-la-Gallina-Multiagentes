@@ -40,7 +40,6 @@ public class EnviarMensaje {
             Logger.getLogger(EnviarMensaje.class.getName()).log(Level.SEVERE, null, e);
             
         }
-        /*Identificamos y mandamos*/
         acl.setConversationId(conversationID);
         agenteEmisor.send(acl);
         
