@@ -67,7 +67,7 @@ public class ARight extends Agent {
                     
                 case 2:
                     EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Listo", "COD_ARig_AForw");
-                    block();
+                    doDelete();
                     
             }
             

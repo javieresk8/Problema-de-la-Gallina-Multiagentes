@@ -20,7 +20,8 @@ public class ASensor extends Agent {
 
     @Override
     protected void takeDown() {
-        super.takeDown(); //To change body of generated methods, choose Tools | Templates.
+        super.takeDown();
+        System.out.println("ASensor muerto");
     }
 
     @Override
@@ -55,7 +56,11 @@ public class ASensor extends Agent {
             }
             
             if (juego.getPosY() <=juego.getPosYMeta()){
+                EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "llegamos", "CODMeta");
                 JOptionPane.showMessageDialog(null, "FELICITACIONES");
+                
+                doDelete();
+                
             }
 
         }

@@ -75,7 +75,8 @@ public class ALeft extends Agent{
                     
                 case 2:
                     EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Listo", "COD_ALef_AForw");
-                    block();
+                    doDelete();
+                    
                     
             }
             
