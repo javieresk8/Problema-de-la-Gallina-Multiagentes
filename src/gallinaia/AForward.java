@@ -79,9 +79,13 @@ public class AForward extends Agent {
                     boolean decision = decidirDireccion((Obstaculo)acl.getContentObject());
                     System.out.println("la decicion tomada es " + decision);
                     if (decision){
-                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ARight", getAgent(),acl.getContentObject(), "COD_AFor_ARig");
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "ARight", getAgent(),acl.getContentObject(), "COD_AFor_ARig");
+                        ACLMessage msg = blockingReceive();
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "ASensor", getAgent(), "Listo", "COD_AFor_ASen");
+                        //restart();
                     } else {
-                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ALeft", getAgent(),acl.getContentObject(), "COD_AFor_ALef");
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "ALeft", getAgent(),acl.getContentObject(), "COD_AFor_ALef");
+                        ACLMessage msg = blockingReceive();
                     }
                 }
                     //if (a_id.equalsIgnoreCase("COD_Sens_Forw")){

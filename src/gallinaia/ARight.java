@@ -59,15 +59,16 @@ public class ARight extends Agent {
                         moverDerecha();
                     } else{
                         juego.avanzarGallina(-6);
-                        block();
+                        
                         indice = 2;
                         System.out.println("la gallina avanzo pa lante");
                     }
                     break;
                     
                 case 2:
-                    //acl.
-                    //
+                    EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Listo", "COD_ARig_AForw");
+                    block();
+                    
             }
             
             

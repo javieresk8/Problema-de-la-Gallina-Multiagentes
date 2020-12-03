@@ -53,6 +53,7 @@ public class ASensor extends Agent{
             System.out.println("Esta cerca el objeto 2!!! =========================" + distancia2);
             EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
             ACLMessage acl = blockingReceive();
+            System.out.println("Vuelvo a raastrear=================================");
            
         }
         
