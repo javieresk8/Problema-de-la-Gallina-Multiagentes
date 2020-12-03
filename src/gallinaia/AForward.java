@@ -38,12 +38,20 @@ public class AForward extends Agent {
     }
     
     class Comportamiento extends CyclicBehaviour{
-        public void decidirDireccion(Obstaculo obstaculo){
+        /*Devuelve true si se va a la derecha, caso contrio a la izquierda*/
+        public boolean decidirDireccion(Obstaculo obstaculo){
             int posObstX = obstaculo.getPosX();
-            if (posObstX == 0)
+            if (posObstX == 0){
                 System.out.println("derecha");
-            else 
+                return  true;
+                
+            } else {
                 System.out.println("izquierda");
+                return false; 
+               
+                    
+            }
+                
         
         }
         @Override
@@ -52,21 +60,34 @@ public class AForward extends Agent {
                 
                 ACLMessage acl = receive();
                 System.out.println(acl);
-                String a_id = acl.getConversationId();
+                
                 /*Cambialo a switch case*/
                         
                 if (acl == null){
-                    Thread.sleep(500);
+                    Thread.sleep(200);
 //                    int posGallinaY = juego.getPosY();
 //                    posGallinaY +=5;
                     juego.avanzarGallina(-5);
                     System.out.println("aumento posicion" + juego.getPosY());
                     //System.out.println(acl.toString()+ "---------------------------------");
-                } else if (a_id.equalsIgnoreCase("COD_Sens_Forw")){
+                 } else {
+                    //if (a_id.equalsIgnoreCase("COD_Sens_Forw")){
                     block();
-                    decidirDireccion((Obstaculo)acl.getContentObject());
-                    
+                    String a_id = acl.getConversationId();
+                    System.out.println("El id es " + a_id);
+                    boolean decision = decidirDireccion((Obstaculo)acl.getContentObject());
+                    System.out.println("la decicion tomada es " + decision);
+                    if (decision){
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ARight", getAgent(),decision, "COD_AFor_ARig");
+                    } else {
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ALeft", getAgent(),decision, "COD_AFor_ALef");
+                    }
                 }
+                    //if (a_id.equalsIgnoreCase("COD_Sens_Forw")){
+//                    block();
+//                    decidirDireccion((Obstaculo)acl.getContentObject());
+                    
+                
                         
                     
                 
