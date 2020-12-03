@@ -20,7 +20,7 @@ public class ASensor extends Agent {
 
     @Override
     protected void setup() {
-        super.setup(); 
+        super.setup();
         addBehaviour(new Comportamiento());
     }
 
@@ -46,13 +46,13 @@ public class ASensor extends Agent {
                 EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
                 ACLMessage acl = blockingReceive();
             }
-            
-            if (juego.getPosY() <=juego.getPosYMeta()){
-                JOptionPane.showMessageDialog(null, "FELICITACIONES la gallina cruzo la calle");
+
+            if (juego.getPosY() <= juego.getPosYMeta()) {
+                JOptionPane.showMessageDialog(null, "FELICITACIONES la gallina cruzó la calle");
                 EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "llegamos", "CODMeta");
-                
+
                 doDelete();
-                
+
             }
 
         }

@@ -1,9 +1,6 @@
-
 package View;
 
 import gallinaia.Obstaculo;
-
-
 
 /**
  *
@@ -11,21 +8,20 @@ import gallinaia.Obstaculo;
  */
 public class Juego extends javax.swing.JFrame {
 
-    
     int posX;
     int posY;
     Obstaculo obs1;
     Obstaculo obs2;
-    
+
     public Juego() {
-        
+
         initComponents();
-        
+
         this.posX = gallina.getX();
-        this.posY = gallina.getY() ; 
+        this.posY = gallina.getY();
         this.obs1 = new Obstaculo(Obs1.getX(), Obs1.getY(), Obs1.getWidth(), Obs1.getHeight());
         this.obs2 = new Obstaculo(Obs2.getX(), Obs2.getY(), Obs2.getWidth(), Obs2.getHeight());
-        
+
     }
 
     public Obstaculo getObs1() {
@@ -35,12 +31,12 @@ public class Juego extends javax.swing.JFrame {
     public Obstaculo getObs2() {
         return obs2;
     }
-    
-    public int getPosYMeta(){
+
+    public int getPosYMeta() {
         return Meta.getY();
     }
-    
-    public int getPosX(){
+
+    public int getPosX() {
         return posX;
     }
 
@@ -51,15 +47,14 @@ public class Juego extends javax.swing.JFrame {
     public void avanzarGallina(int aumentoY) {
         this.posY += aumentoY;
         gallina.setLocation(posX, posY);
-        
-    }
-    
-    public void desplazarX(int desplazamientoX ){
-        this.posX += desplazamientoX;
-        gallina.setLocation(posX, posY);  
+
     }
 
-    
+    public void desplazarX(int desplazamientoX) {
+        this.posX += desplazamientoX;
+        gallina.setLocation(posX, posY);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
