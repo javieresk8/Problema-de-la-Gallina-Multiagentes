@@ -41,9 +41,10 @@ public class Contenedor {
     private void iniciarAgentes(){
         try {
             mainContainer.createNewAgent("ARight", ARight.class.getName(), null).start();
+            mainContainer.createNewAgent("ALeft", ALeft.class.getName(), null).start();
             mainContainer.createNewAgent("AForward", AForward.class.getName(), null).start();
            
-           // mainContainer.createNewAgent("ALeft", ALeft.class.getName(), null).start();
+          
             mainContainer.createNewAgent("ASensor", ASensor.class.getName(), null).start();
             
         } catch (StaleProxyException e) {

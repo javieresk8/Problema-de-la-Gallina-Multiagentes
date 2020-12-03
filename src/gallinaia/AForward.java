@@ -84,6 +84,7 @@ public class AForward extends Agent {
                         EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "ASensor", getAgent(), "Listo", "COD_AFor_ASen");
                         //restart();
                     } else {
+                        System.out.println("Llego a mandar el mensaje a la izquierda================");
                         EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "ALeft", getAgent(),acl.getContentObject(), "COD_AFor_ALef");
                         ACLMessage msg = blockingReceive();
                     }
