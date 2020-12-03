@@ -13,6 +13,12 @@ import java.util.logging.Level;
  *
  * @author uuse
  */
+/*===========================El problema de la Gallina===========================
+La gallina quiere cruzar la calle y existen obstáculos en su camino,
+se implementa agentes inteligentes para ayudarla a llegar a la meta y que
+no muera en el intento
+Se utiliza una arquitectura multiagente en un ambiente estático*/
+
 public class Contenedor {
 
     AgentController agentController;
