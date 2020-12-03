@@ -83,7 +83,7 @@ public class AForward extends Agent {
                         System.out.println("El id es " + a_id);
                         if (a_id.equalsIgnoreCase("CODMeta")){
                             doDelete();
-                            System.out.println("muerto forward");
+                            
                         }
                         boolean decision = decidirDireccion((Obstaculo)acl.getContentObject());
                         System.out.println("la decicion tomada es " + decision);
