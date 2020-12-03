@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gallinaia;
 
 import static gallinaia.Contenedor.juego;
@@ -10,11 +5,10 @@ import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
- * @author uuse
+ * @author Javier Erazo
  */
 public class ASensor extends Agent {
 
@@ -26,7 +20,7 @@ public class ASensor extends Agent {
 
     @Override
     protected void setup() {
-        super.setup(); //To change body of generated methods, choose Tools | Templates.
+        super.setup(); 
         addBehaviour(new Comportamiento());
     }
 
@@ -43,21 +37,19 @@ public class ASensor extends Agent {
             Obstaculo obstaculoEncontrado;
             if (distancia <= 30 && distancia >= 25) {
                 obstaculoEncontrado = juego.getObs1();
-                System.out.println("Esta cerca el objeto 1!!! =========================" + distancia);
+                System.out.println("Esta cerca el objeto 1" + distancia);
                 EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
                 ACLMessage acl = blockingReceive();
             } else if (distancia2 <= 30 && distancia2 >= 25) {
                 obstaculoEncontrado = juego.getObs2();
-                System.out.println("Esta cerca el objeto 2!!! =========================" + distancia2);
+                System.out.println("Esta cerca el objeto 2" + distancia2);
                 EnviarMensaje.enviarMensajeObject(ACLMessage.INFORM, "AForward", getAgent(), obstaculoEncontrado, "COD_Sens_Forw");
                 ACLMessage acl = blockingReceive();
-                System.out.println("Vuelvo a raastrear=================================");
-
             }
             
             if (juego.getPosY() <=juego.getPosYMeta()){
+                JOptionPane.showMessageDialog(null, "FELICITACIONES la gallina cruzo la calle");
                 EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "llegamos", "CODMeta");
-                JOptionPane.showMessageDialog(null, "FELICITACIONES");
                 
                 doDelete();
                 

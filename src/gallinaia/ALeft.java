@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gallinaia;
 
 import static gallinaia.Contenedor.juego;
@@ -15,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author uuse
+ * @author Javier Erazo
  */
 public class ALeft extends Agent{
         @Override
@@ -34,17 +30,12 @@ public class ALeft extends Agent{
         public void moverIzquierda() {
             try {
                 Thread.sleep(200);
-                int posGallinaY = juego.getPosX();
                 juego.desplazarX(-5);
-                 System.out.println("aumento posicion en X" + juego.getPosX());
             } catch (InterruptedException ex) {
                 Logger.getLogger(ARight.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-//        public void verificarDistancia(){
-//            
-//        }
-
+        
         @Override
         public void action() {
             switch (indice){
@@ -62,31 +53,18 @@ public class ALeft extends Agent{
                 case 1:
                     accum += 5;
                     sigSalida = obstaculo.getLargo() - posXInicial +20;
-                    System.out.println(String.format("La posicion de gallina es %d y la del obs es %d", posXInicial, obstaculo.getPosX()));
                     if ( sigSalida > accum){
                         moverIzquierda();
                     } else{
                         juego.avanzarGallina(-6);
-                        
                         indice = 2;
-                        System.out.println("la gallina avanzo pa lante");
                     }
                     break;
                     
                 case 2:
                     EnviarMensaje.enviarMensajeString(ACLMessage.INFORM, "AForward", getAgent(), "Listo", "COD_ALef_AForw");
-                    doDelete();
-                    
-                    
-            }
-            
-            
-               
-                
-
-                
-            
-
+                    doDelete();     
+            } 
         }
 
         @Override
