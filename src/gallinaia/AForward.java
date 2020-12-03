@@ -60,7 +60,8 @@ public class AForward extends Agent {
                 
                 ACLMessage acl = receive();
                 System.out.println(acl);
-                
+                /*recuerda que no puedes sacar atibutos del acl si es null
+                se ira hasta el infinito en null si lo haces*/
                 /*Cambialo a switch case*/
                         
                 if (acl == null){
@@ -78,9 +79,9 @@ public class AForward extends Agent {
                     boolean decision = decidirDireccion((Obstaculo)acl.getContentObject());
                     System.out.println("la decicion tomada es " + decision);
                     if (decision){
-                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ARight", getAgent(),decision, "COD_AFor_ARig");
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ARight", getAgent(),acl.getContentObject(), "COD_AFor_ARig");
                     } else {
-                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ALeft", getAgent(),decision, "COD_AFor_ALef");
+                        EnviarMensaje.enviarMensajeObject(ACLMessage.REQUEST, "ALeft", getAgent(),acl.getContentObject(), "COD_AFor_ALef");
                     }
                 }
                     //if (a_id.equalsIgnoreCase("COD_Sens_Forw")){

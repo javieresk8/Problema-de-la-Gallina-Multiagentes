@@ -37,8 +37,8 @@ public class Juego extends javax.swing.JFrame {
         
         this.posX = gallina.getX();
         this.posY = gallina.getY() ; 
-        this.obs1 = new Obstaculo(Obs1.getX(), Obs1.getY());
-        this.obs2 = new Obstaculo(Obs2.getX(), Obs2.getY());
+        this.obs1 = new Obstaculo(Obs1.getX(), Obs1.getY(), Obs1.getWidth(), Obs1.getHeight());
+        this.obs2 = new Obstaculo(Obs2.getX(), Obs2.getY(), Obs2.getWidth(), Obs2.getHeight());
         
     }
 
@@ -52,9 +52,9 @@ public class Juego extends javax.swing.JFrame {
     
     
     
-//    public int getPosX(){
-//        return posX;
-//    }
+    public int getPosX(){
+        return posX;
+    }
 //
 //    public void setPosX(int posX) {
 //        this.posX = posX;
@@ -74,6 +74,12 @@ public class Juego extends javax.swing.JFrame {
         gallina.setLocation(posX, posY);
         
     }
+    
+    public void desplazarX(int desplazamientoX ){
+        this.posX += desplazamientoX;
+        gallina.setLocation(posX, posY);  
+    }
+    
     /*Como saber si me voy a la derecha o a la izquierda?*/
    /* pubic void izquierda(){
         
